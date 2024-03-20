@@ -1,6 +1,22 @@
 <script setup lang="ts">
-
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, } from '@/components/ui/dialog'
+import { FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { toTypedSchema } from '@vee-validate/zod'
+import * as z from 'zod'
+import { useForm } from 'vee-validate'
+
+const formSchema = toTypedSchema(z.object({
+  city: z.string().min(2).max(50),
+}))
+
+const form = useForm({
+  validationSchema: formSchema,
+})
+
+const onSubmit = form.handleSubmit((values) => {
+  console.log('Form submitted!', values)
+})
 </script>
 
 <template>
@@ -11,7 +27,20 @@ import { Dialog, DialogTrigger, DialogContent, DialogTitle, } from '@/components
     </DialogTrigger>
     <DialogContent>
       <DialogTitle class="sr-only">Stadt Suche</DialogTitle>
-      Hallo Welt
+      <form @submit="onSubmit">
+        <FormField v-slot="{ componentField }" name="city">
+          <FormItem>
+            <FormLabel>Stadt</FormLabel>
+            <FormControl>
+              <Input type="text" placeholder="London" v-bind="componentField"/>
+            </FormControl>
+            <FormDescription>
+              Gib den Namen einer Stadt ein, um das Wetter zu suchen.
+            </FormDescription>
+            <FormMessage/>
+          </FormItem>
+        </FormField>
+      </form>
     </DialogContent>
   </Dialog>
 </template>
