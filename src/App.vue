@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { useDark } from '@vueuse/core'
+import Header from '@/components/Header.vue'
 
-const isDark = useDark()
+console.log(import.meta.env.VITE_API_KEY)
 </script>
 
 <template>
-  <div class="container min-h-screen">
-
+  <div class="min-h-screen">
+    <Header/>
+    <div class="container flex flex-col">
+      <main class="flex-1">
+      </main>
+    </div>
   </div>
 </template>
