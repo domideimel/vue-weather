@@ -33,7 +33,7 @@ watch([lat, lon], ([lat, lon]) => {
 <template>
   <div class="min-h-screen">
     <Header/>
-    <div class="container flex flex-col mt-5">
+    <div class="container flex flex-col mt-8">
       <main class="flex-1">
         <Alert v-if="hasGeoPermission === 'denied'" variant="destructive">
           <AlertCircle class="w-4 h-4"/>

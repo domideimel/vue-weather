@@ -41,7 +41,7 @@ const { data } = useQuery({
           <Skeleton class="w-1/4 h-3"/>
         </template>
         <template v-else>
-          {{ data?.weather[0].description }}
+          {{ data?.weather[0].description }}<span v-if="data?.main?.temp">, {{ data.main.temp }}°C</span>
         </template>
       </CardDescription>
     </CardHeader>
@@ -54,18 +54,15 @@ const { data } = useQuery({
           <Skeleton class="w-1/2 h-6"/>
         </template>
         <template v-else>
-          <div v-if="data?.main?.temp">
-            Temperatur: {{ data.main.temp }}°C
-          </div>
           <div v-if="data?.dt">
             Zeit der Datenermittlung: {{ new Date(data.dt * 1000).toLocaleTimeString() }} Uhr
           </div>
           <Separator/>
           <div v-if="data?.sys?.sunrise">
-            Sonnenaufgang: {{ new Date(data.sys.sunrise * 1000).toLocaleTimeString() }}
+            Sonnenaufgang: {{ new Date(data.sys.sunrise * 1000).toLocaleTimeString() }} Uhr
           </div>
           <div v-if="data?.sys?.sunset">
-            Sonnenuntergang: {{ new Date(data.sys.sunset * 1000).toLocaleTimeString() }}
+            Sonnenuntergang: {{ new Date(data.sys.sunset * 1000).toLocaleTimeString() }} Uhr
           </div>
         </template>
       </div>
