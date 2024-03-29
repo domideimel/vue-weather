@@ -15,7 +15,7 @@ const open = ref<boolean>(false)
 
 const coordinates = useCoordinatesStore()
 const formSchema = toTypedSchema(z.object({
-  city: z.string().max(50),
+  city: z.string().min(1).max(50),
 }))
 
 const form = useForm({
