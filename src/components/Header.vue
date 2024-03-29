@@ -2,7 +2,7 @@
 import { useDark, useToggle } from '@vueuse/core'
 import SearchForm from '@/components/search-form/SearchForm.vue'
 import { Button } from '@/components/ui/button'
-import {MoonIcon, SunIcon} from '@heroicons/vue/20/solid'
+import { MoonIcon, SunIcon } from '@heroicons/vue/20/solid'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -19,8 +19,8 @@ const toggleDark = useToggle(isDark)
           aria-label="Toggle dark mode"
           @click="toggleDark()"
         >
-          <MoonIcon class="size-5" v-if="!isDark" />
-          <SunIcon class="size-5" v-else />
+          <MoonIcon class="size-5" v-if="!isDark"/>
+          <SunIcon class="size-5" v-else/>
         </Button>
       </div>
     </div>
